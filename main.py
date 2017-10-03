@@ -17,8 +17,9 @@ def valid_password(password):
         return False
     return True   
 def valid_email(email):
-    if email.find(' ') != -1  or len(email)<3 or len(email)>20 or email.count('@') > 1 or email.count('.') >1:
-        return False
+    if email:
+        if  email.find(' ') != -1 or len(email)<3 or len(email)>20 or email.count('@') > 1 or email.count('.') >1:
+            return False
     return True
       
 @app.route('/signup',methods=['GET','POST'])
@@ -33,7 +34,7 @@ def signup():
         verify = request.form['verify']
         email = request.form['email']
 
-        if  valid_username(username) and valid_password(password):
+        if  valid_username(username) and valid_password(password) and valid_email(email) and (password==verify):
             return redirect('/welcome?username='+username)
         else:
             if not valid_username(username):
