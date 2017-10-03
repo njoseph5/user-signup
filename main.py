@@ -17,7 +17,7 @@ def valid_password(password):
         return False
     return True   
 def valid_email(email):
-    if email.find(' ') != -1  or len(email)<3 or len(email)>20 or email.count('@') > 1 :
+    if email.find(' ') != -1  or len(email)<3 or len(email)>20 or email.count('@') > 1 or email.count('.') >1:
         return False
     return True
       
@@ -49,9 +49,14 @@ def signup():
             else:
                 verify_password_error = ""    
             if not valid_email(email):
+                email_error = "Not a valid email"
+            else:
+                email_error = ""    
 
-                return render_template('signup.html',username_error = username_error,
+            return render_template('signup.html',username_error = username_error,
                                                         password_error=password_error,
+                                                        verify_password_error=verify_password_error,
+                                                        email_error=email_error
                                                         ) 
 @app.route('/welcome')
 def welcome():
