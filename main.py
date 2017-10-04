@@ -57,7 +57,7 @@ def signup():
             return render_template('signup.html',username_error = username_error,
                                                         password_error=password_error,
                                                         verify_password_error=verify_password_error,
-                                                        email_error=email_error
+                                                        email_error=email_error,username=username,email=email
                                                         ) 
 @app.route('/welcome')
 def welcome():
