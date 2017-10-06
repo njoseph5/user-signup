@@ -18,7 +18,7 @@ def valid_password(password):
     return True   
 def valid_email(email):
     if email:
-        if  email.find(' ') != -1 or len(email)<3 or len(email)>20 or email.count('@') > 1 or email.count('.') >1:
+        if  email.find(' ') != -1 or len(email)<3 or len(email)>20 or email.count('@') > 1 or email.count('@') < 1 or  email.count('.') >1 or email.count('.') <1:
             return False
     return True
       
